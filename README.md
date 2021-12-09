@@ -21,9 +21,10 @@ cf push --random-route
 ```
 Set the environment variables for the ABAP web API, the S4HC host and Base64 User:Password.
 ```bash
-cf set-env whproxy S4HCTENANT https://<yourS4HC>-api.s4hana.ondemand.com/sap/opu/odata/sap/API_SALES_ORDER_SRV
-cf set-env whproxy USERPW <your_b64_userpw>
-cf set-env whproxy ABAPTENANT https://<yourABAPTenant>.abap.eu10.hana.ondemand.com/sap/opu/odata/sap/ZAPI_CE_BONUS_CALC_SA
+cf set-env ABAPProxy S4HCTENANT https://<yourS4HC>.s4hana.ondemand.com/sap/opu/odata/sap/API_SALES_ORDER_SRV
+cf set-env ABAPProxy USERPW <your_b64_userpw>
+cf set-env ABAPProxy ABAPTENANT https://<yourABAPTenant>.abap.eu10.hana.ondemand.com/sap/opu/odata/sap/ZAPI_CE_BONUS_CALC_SA
+cf restage ABAPProxy
 ```
 For details on how to deploy apps on SCP CF check this tutorial: [Get Started with SAP Cloud Platform Trial](https://developers.sap.com/tutorials/cp-trial-quick-onboarding.html)
 
