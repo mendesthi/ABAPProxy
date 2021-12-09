@@ -4,6 +4,9 @@
 # package-lock
 package-lock.json
 
+#old app.js built with express module
+app-express.js
+
 # Logs
 logs
 *.log
