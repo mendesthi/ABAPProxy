@@ -1,4 +1,5 @@
 "use strict";
+//require('dotenv').config({path: __dirname + '/.env'});
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -60,16 +61,16 @@ app.post("/calc", function (req, res) {
       axios
         .request(options)
         .then(function (response) {
-          var employeeID = response.data.d.CreatedByUser.substring(3);
+          var employeeID = response.data.d.CreatedByUser.substring(2);
           console.log("Employee ID: " + employeeID);
 
           //3rd - call ABAP RAP endpoint
           var axios = require("axios").default;
           var options = {
             method: "POST",
-            url: ABAPTENANT + "/calculate_bonus_event?ID='"+employeeID+"'",
+            url: ABAPTENANT + "/calculate_bonus_event?ID='" + employeeID + "'",
             headers: {
-              cookie: "sap-usercontext=sap-client%3D100; "+ sapSessID[1].split(";", 1).toString(),
+              cookie: sapSessID[1].split(";", 1).toString() +  "; sap-usercontext=sap-client=100",
               "x-csrf-token": csrfToken,
               "If-Match": "*",
               Accept: "application/json",
